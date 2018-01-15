@@ -1002,9 +1002,9 @@ TSoundTrackP TXshSoundColumn::getOverallSoundTrack(int fromFrame, int toFrame,
 
 // We prefer to have 22050 as a maximum sampleRate (to avoid crashes or
 // another issues)
-#ifndef MACOSX
-  if (format.m_sampleRate >= 44100) format.m_sampleRate = 22050;
-#else
+//#ifndef MACOSX
+//  if (format.m_sampleRate >= 44100) format.m_sampleRate = 22050;
+//#else
   QAudioDeviceInfo info(QAudioDeviceInfo::defaultOutputDevice());
   QList<int> ssrs = info.supportedSampleRates();
   if (!ssrs.contains(format.m_sampleRate)) format.m_sampleRate = 44100;
@@ -1026,7 +1026,7 @@ TSoundTrackP TXshSoundColumn::getOverallSoundTrack(int fromFrame, int toFrame,
     else
       format.m_signedSample = false;
   }
-#endif
+//#endif
   // Create the soundTrack
   double samplePerFrame = format.m_sampleRate / fps;
 
